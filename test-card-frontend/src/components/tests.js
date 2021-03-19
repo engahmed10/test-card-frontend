@@ -1,13 +1,17 @@
 
 import {useEffect,useState}  from "react" 
 import Flippy,{FrontSide,BackSide}  from 'react-flippy'
+import AddTest  from "./addtests"
+import React,{Fragment} from 'react';
+import { useLocation } from "react-router-dom";
 
 
-function Tests() {
+function Tests({props}) {
 
 
   const [tests,setTests] = useState()
   const[next,setNext] =useState(0)
+    const location = useLocation();
 
 useEffect(()=>{
 
@@ -16,8 +20,10 @@ useEffect(()=>{
    .then((response) => response.json())
    .then(data=>{setTests(data)})
      .catch((error) => console.log(error));
+       
 
 },[])
+
 
 
 function handleNext(){
@@ -28,7 +34,9 @@ function handlePrevious(){
   setNext(-1);
 }
 
+
 const display=()=>{
+
    if(tests !== undefined){
        return  <Flippy
             flipONHover={true}
@@ -44,21 +52,27 @@ const display=()=>{
          </BackSide>
            
          </Flippy>
-          
-      
   }
+      if(location.state !== undefined && tests !== undefined) {
+         setTests(tests.concat(location.state.detail))
+         console.log(`heerer`,tests)
+     }
+
+
+  
     
 }
 
   return (
-    <div>
-     <button type=""  onClick={handleNext}>
+    <fragment>
+     <button type=""  onClick={(e)=> next < tests.length-1?handleNext:false}>
      </button>
      {display()}
+     {console.log(`tests`,tests)}
      <button type=""  onCLick={handlePrevious}>
      </button>
-
-    </div>
+   
+    </fragment>
   );
 }
 
