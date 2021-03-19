@@ -1,14 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
-navbar.propTypes = {
-    
-};
-
+import {NavLink}  from "react-router-dom"
 function NavBar(props) {
     return (
         <div>
-            
+            <NavLink to="/about">
+            About
+            </NavLink>
+             <NavLink to="/tests">
+               All Tests
+            </NavLink>
+             <NavLink to="/createtest">
+               Create Test
+            </NavLink>
         </div>
     );
 }

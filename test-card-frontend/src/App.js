@@ -11,9 +11,9 @@ function App() {
     <div className="App">
      <Router>
       <NavBar/>
-      <Route exact path=" "  render={routeProps => <About {...routeProps} /> }/>
-      <Route exact path=" "  render={routeProps => <Tests {...routeProps} /> }/>
-      <Route exact path=" "  render={routeProps => <AddTest {...routeProps} /> }/>
+      <Route exact path="/About"  render={routeProps => <About {...routeProps} /> }/>
+      <Route exact path="/tests"  render={routeProps => <Tests {...routeProps} /> }/>
+      <Route exact path="/createtest"  render={routeProps => <AddTest {...routeProps} /> }/>
      </Router>
     </div>
   );
