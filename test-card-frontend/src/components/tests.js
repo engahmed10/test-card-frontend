@@ -1,12 +1,13 @@
 
 import {useEffect,useState}  from "react" 
-
+import Flippy,{FrontSide,BackSide}  from 'react-flippy'
 
 
 function Tests() {
 
 
   const [tests,setTests] = useState()
+  const[next,setNext] =useState(0)
 
 useEffect(()=>{
 
@@ -19,17 +20,43 @@ useEffect(()=>{
 },[])
 
 
+function handleNext(){
+   setNext(+1);
+}
+
+function handlePrevious(){
+  setNext(-1);
+}
+
+const display=()=>{
+   if(tests !== undefined){
+       return  <Flippy
+            flipONHover={true}
+             flipOnClick={true}
+             flipDirection="vertical"
+         
+         >
+         <FrontSide>
+          {tests[next].question}
+         </FrontSide>
+          <BackSide>
+           { tests[next].answer}
+         </BackSide>
+           
+         </Flippy>
+          
+      
+  }
+    
+}
+
   return (
     <div>
-    { tests !== undefined?
-    
-      tests.map(test=>
-          { return (test.question,
-            test.answer)
-           }
-      ):
-      ""
-    }
+     <button type=""  onClick={handleNext}>
+     </button>
+     {display()}
+     <button type=""  onCLick={handlePrevious}>
+     </button>
 
     </div>
   );
