@@ -1,19 +1,43 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {NavLink}  from "react-router-dom"
+import { Menu ,Segment} from 'semantic-ui-react'
+
 function NavBar(props) {
+  //state = { activeItem: 'Tests' }
+    const[activeItem,setactiveItem]=useState('Tests')
+  const handleItemClick = (e, { name }) => setactiveItem({ activeItem: name })
+
     return (
-        <div>
-            <NavLink to="/about">
-            About
-            </NavLink>
+
+      <Segment inverted>
+           <Menu inverted secondry>
+                <NavLink to="/about">
+                 <Menu.Item
+                 name='About'
+                 active={activeItem === 'about'}
+                 onClick={handleItemClick}
+                 />
+                </NavLink>
              <NavLink to="/tests">
-               All Tests
+                 <Menu.Item
+                 name='Tests'
+                 active={activeItem === 'tests'}
+                 onClick={handleItemClick}
+                 />
             </NavLink>
              <NavLink to="/createtest">
-               Create Test
+                <Menu.Item
+                 name='createTest'
+                 active={activeItem === 'tests'}
+                 onClick={handleItemClick}
+                 />
             </NavLink>
-        </div>
+            </Menu>
+      </Segment>
+        
     );
 }
 
 export default NavBar;
+         
+ 

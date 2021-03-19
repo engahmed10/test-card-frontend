@@ -20,6 +20,10 @@ useEffect(()=>{
    .then((response) => response.json())
    .then(data=>{setTests(data)})
      .catch((error) => console.log(error));
+        if(location.state !== undefined && tests !== undefined) {
+         setTests(tests.concat(location.state.detail))
+         console.log(`heerer`,tests)
+     }
        
 
 },[])
@@ -27,16 +31,18 @@ useEffect(()=>{
 
 
 function handleNext(){
-   setNext(+1);
+     console.log(next)
+
+   setNext(next+1);
 }
 
 function handlePrevious(){
-  setNext(-1);
+  setNext(next-1);
 }
 
 
 const display=()=>{
-
+   
    if(tests !== undefined){
        return  <Flippy
             flipONHover={true}
@@ -45,10 +51,10 @@ const display=()=>{
          
          >
          <FrontSide>
-          {tests[next].question}
+          {tests[`${next}`]["question"]}
          </FrontSide>
           <BackSide>
-           { tests[next].answer}
+           { tests[`${next}`]["answer"]}
          </BackSide>
            
          </Flippy>
@@ -57,19 +63,18 @@ const display=()=>{
          setTests(tests.concat(location.state.detail))
          console.log(`heerer`,tests)
      }
-
-
-  
     
 }
 
   return (
     <fragment>
-     <button type=""  onClick={(e)=> next < tests.length-1?handleNext:false}>
+     <button type=""  onClick={(e)=> next < tests.length-1 ? handleNext(e):()=>false}
+     >
+     Next
      </button>
      {display()}
-     {console.log(`tests`,tests)}
-     <button type=""  onCLick={handlePrevious}>
+     <button type=""  onClick={(e)=> next > 0 ? handlePrevious(e):()=>false} >
+     Prev
      </button>
    
     </fragment>
