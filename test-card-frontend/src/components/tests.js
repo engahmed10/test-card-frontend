@@ -4,8 +4,8 @@ import Flippy,{FrontSide,BackSide}  from 'react-flippy'
 import AddTest  from "./addtests"
 import React,{Fragment} from 'react';
 import { useLocation } from "react-router-dom";
-
-
+import {Card}  from 'semantic-ui-react'
+ 
 function Tests({props}) {
 
 
@@ -42,37 +42,52 @@ function handlePrevious(){
 
 
 const display=()=>{
-   
-   if(tests !== undefined){
-       return  <Flippy
-            flipONHover={true}
-             flipOnClick={true}
-             flipDirection="vertical"
+
+  if(tests !== undefined){
+
+       return   <div   class ="flippy">
+             <Flippy   style={{'height':'250px','background':'black'}}
+                flipONHover={true}
+                flipOnClick={true}
+                flipDirection="vertical"
+                >
+                 <FrontSide>
+                  <Card   style={{'margin':'1.5em'}}>
+                   <Card.Content header='Questions' />
+                    <Card.Content class="flip-card">
+                      {tests[`${next}`]["question"]}
+                      </Card.Content>
+                    </Card>
+                  </FrontSide>
+              <BackSide>
+                <Card   style={{'margin':'1.5em'}}>
+                <Card.Content header='Answer' />   
+                  <Card.Content>
+
+                   { tests[`${next}`]["answer"]}
+                   </Card.Content>
+                  </Card>
+
+               </BackSide>
+           </Flippy>
+           </div>
          
-         >
-         <FrontSide>
-          {tests[`${next}`]["question"]}
-         </FrontSide>
-          <BackSide>
-           { tests[`${next}`]["answer"]}
-         </BackSide>
-           
-         </Flippy>
   }
       if(location.state !== undefined && tests !== undefined) {
          setTests(tests.concat(location.state.detail))
-         console.log(`heerer`,tests)
+       
      }
     
 }
 
   return (
     <fragment>
+        {display()}
      <button type=""  onClick={(e)=> next < tests.length-1 ? handleNext(e):()=>false}
      >
      Next
      </button>
-     {display()}
+ 
      <button type=""  onClick={(e)=> next > 0 ? handlePrevious(e):()=>false} >
      Prev
      </button>

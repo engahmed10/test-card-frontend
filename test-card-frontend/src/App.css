@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+
+.flippy {
+  margin:3em 25em;
+  padding: 5em;
+
+}
+.flip-card{
+ padding: 4em;
+}
