@@ -11,7 +11,7 @@ function Tests({props}) {
 
   const [tests,setTests] = useState()
   const[next,setNext] =useState(0)
-  const location = useLocation();
+  //const location = useLocation();
 
 useEffect(()=>{
 
