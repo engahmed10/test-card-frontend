@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import AddTest  from './components/addtests'
 import Tests  from './components/tests'
 import {shallow}  from 'enzyme';
-
+import {mount}  from 'enzyme'
 
 test('Shows that he contains about component and chcek is the app is true no error',()=>{
 
@@ -29,23 +29,14 @@ test('checks addtTest Card correct or not ',()=>{
   
   ReactDOM.render(<AddTest/>,div);
 
- //expect('div.innerHTML').toContain('ahmed');
- expect('div.innerHTML').toBeTruthy();
-  //expect('div.innerHTML').toHaveAnInstanceOf(AddTest);
+  expect('div.innerHTML').toBeTruthy();
 
 })
 
 
+test('checks the addTest component that has two textarea feild one for id and one for name or not',()=> {
 
-test('checks our app has Tests  card component by using enzyme',()=>{
-  
- //using enzyme shallow render type    
- const component = shallow(<App />);
- expect(component.find(App).length).toEqual(1);
-
-
+ let  wrapped=mount(<AddTest/>)
+ expect(wrapped.find('textarea').length).toEqual(2)
 
 })
-
-
-
