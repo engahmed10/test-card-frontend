@@ -48,7 +48,7 @@ const handleSubmit=(e)=>{
                <Form onSubmit={handleSubmit}>
                     <Form.Field>
                         <label>Question</label>
-                        <textarea placeholder='Question' name="question" ref={inputQuestion}/>
+                        <textarea placeholder='Question' name="question" ref={inputQuestion}  />
                     </Form.Field>
 
                     <Form.Field>

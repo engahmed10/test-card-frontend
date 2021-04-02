@@ -7,13 +7,8 @@ import {mount}  from 'enzyme'
 
 test('Shows that he contains about component and chcek is the app is true no error',()=>{
 
-
       const div = document.createElement('div');
-
-
       ReactDOM.render(<App/>,div);
-
-
       //if we want to find About in App component  <Route exact path="/About"  />,we will use toContain and test will pass 
       expect(div.innerHTML).toContain('About');
       //check is it true or false
@@ -39,4 +34,15 @@ test('checks the addTest component that has two textarea feild one for id and on
  let  wrapped=mount(<AddTest/>)
  expect(wrapped.find('textarea').length).toEqual(2)
 
+
 })
+
+test('has a button that user can submit correctly on new targetcoming from  textarea',()=>{
+
+  let wrapped=mount(<AddTest/>)
+
+  wrapped.find('Button').simulate('submit',{
+    target: {value: 'new test'}
+  });
+
+});
