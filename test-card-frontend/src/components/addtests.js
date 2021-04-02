@@ -2,7 +2,6 @@
 import { Button, Form } from "semantic-ui-react"
 
 import {useRef,createRef}  from "react"
-import { Redirect }  from "react-router-dom"  
 import { useHistory } from "react-router-dom";
 
 
@@ -15,7 +14,6 @@ let history = useHistory();
 
 const handleSubmit=(e)=>{
    e.preventDefault();
-
   let data={
       question:inputQuestion.current.value,
       answer:inputAnswer.current.value
@@ -28,7 +26,6 @@ const handleSubmit=(e)=>{
                'Content-Type':'application/json'
                }
             }
-  
   )
       .then((response) => response.json())
       .then((tests) => 
@@ -59,9 +56,9 @@ const handleSubmit=(e)=>{
                         <textarea placeholder='Answer'  name="answer" ref={inputAnswer}/>
                     </Form.Field>
 
-                <Button type='submit'>Submit</Button>
+                  <Button type='submit'>Submit</Button>
 
-            </Form>
+                </Form>
 
                   
         </div>

@@ -1,8 +1,20 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import ReactDOM from 'react-dom'
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+
+test('Shows a comment box ',()=>{
+
+
+const div = document.createElement('div');
+
+
+
+ReactDOM.render(<App/>,div);
+
+console.log('app comoponent',div.innerHTML);
+
+
+ReactDOM.unmountComponentAtNode(div);
+
+})
