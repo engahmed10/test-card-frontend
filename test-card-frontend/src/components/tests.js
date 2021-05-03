@@ -42,6 +42,19 @@ function handleDelete(e,test){
   e.preventDefault();
   console.log('testdfo delete',test)
 
+  const fetchUrl =`http://127.0.0.1:3000/tests/${test.id}`;
+  fetch(fetchUrl, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+     body:JSON.stringify(test.id)
+  })
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((error) => console.log(error));
+  
+
 }
 const display=()=>{
 
