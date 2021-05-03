@@ -11,7 +11,7 @@ function Tests({props}) {
 
   const [tests,setTests] = useState()
   const[next,setNext] =useState(0)
-  //const location = useLocation();
+  const location = useLocation();
 
 useEffect(()=>{
 
@@ -38,7 +38,11 @@ function handlePrevious(){
   setNext(next-1);
 }
 
+function handleDelete(e,test){
+  e.preventDefault();
+  console.log('testdfo delete',test)
 
+}
 const display=()=>{
 
   if(tests !== undefined){
@@ -54,8 +58,10 @@ const display=()=>{
                    <Card.Content header='Questions' />
                     <Card.Content class="flip-card">
                       {tests[`${next}`]["question"]}
+
                       </Card.Content>
                     </Card>
+                    <button onClick={(e)=> handleDelete(e,tests[`${next}`])}>Delete</button>
                   </FrontSide>
               <BackSide>
                 <Card   style={{'margin':'1.5em'}}>

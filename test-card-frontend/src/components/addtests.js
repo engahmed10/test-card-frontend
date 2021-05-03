@@ -39,8 +39,6 @@ const handleSubmit=(e)=>{
       )
       .catch((error) => console.log(error));
 
-
-
 }
 
     return (

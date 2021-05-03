@@ -40,7 +40,6 @@ test('checks the addTest component that has two textarea feild one for id and on
 test('has a button that user can submit correctly on new targetcoming from  textarea',()=>{
 
   let wrapped=mount(<AddTest/>)
-
   wrapped.find('Button').simulate('submit',{
     target: {value: 'new test'}
   });
